@@ -23,8 +23,16 @@ protocol Swipeable {
     var panGestureRecognizer: UIGestureRecognizer { get }
 }
 
-extension SwipeTableViewCell: Swipeable {}
-extension SwipeCollectionViewCell: Swipeable {}
+public protocol SwipeableDelegate {
+    func didAddActions()
+}
+
+extension SwipeTableViewCell: Swipeable, SwipeableDelegate {
+    @objc open func didAddActions() {}
+}
+extension SwipeCollectionViewCell: Swipeable, SwipeableDelegate {
+    @objc open func didAddActions() {}
+}
 
 enum SwipeState: Int {
     case center = 0

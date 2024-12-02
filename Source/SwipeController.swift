@@ -184,7 +184,7 @@ class SwipeController: NSObject {
         configureActionsView(with: actions, for: orientation)
         
         delegate?.swipeController(self, willBeginEditingSwipeableFor: orientation)
-        
+        (delegate as? SwipeableDelegate)?.didAddActions()
         return true
     }
     
